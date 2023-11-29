@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package DAO;
 
 import java.sql.*;
@@ -12,7 +9,7 @@ import model.Product;
 
 /**
  *
- * @author Atul
+ * @author AK
  */
 public class BillDao {
 
@@ -32,7 +29,9 @@ public class BillDao {
     }
 
     public static void save(Bill bill) {
-        String query = "insert into bill values('" + bill.getId() + "','" + bill.getName() + "','" + bill.getMobileNumber() + "','" + bill.getEmail() + "','" + bill.getDate() + "','" + bill.getTotal() + "','" + bill.getCreatedBy() + "')";
+        String query = "insert into bill values('" + bill.getId() + "','" + bill.getName() + "','"
+                + bill.getMobileNumber() + "','" + bill.getEmail() + "','" + bill.getDate() + "','" + bill.getTotal()
+                + "','" + bill.getCreatedBy() + "')";
         DbOperation.setDataorDelete(query, "bill details added successfully");
 
     }
@@ -40,7 +39,7 @@ public class BillDao {
     public static ArrayList<Bill> getAllRecordsByInc(String date) {
         ArrayList<Bill> arrayList = new ArrayList<>();
         try {
-            ResultSet rs = DbOperation.getData("select * from bill where date like'%"+date+"%'");
+            ResultSet rs = DbOperation.getData("select * from bill where date like'%" + date + "%'");
             while (rs.next()) {
                 Bill bill = new Bill();
                 bill.setId(rs.getInt("id"));
@@ -57,10 +56,11 @@ public class BillDao {
         }
         return arrayList;
     }
-     public static ArrayList<Bill> getAllRecordsByDesc(String date) {
+
+    public static ArrayList<Bill> getAllRecordsByDesc(String date) {
         ArrayList<Bill> arrayList = new ArrayList<>();
         try {
-            ResultSet rs = DbOperation.getData("select * from bill where date like'%"+date+"%' order by DESC");
+            ResultSet rs = DbOperation.getData("select * from bill where date like'%" + date + "%' order by DESC");
             while (rs.next()) {
                 Bill bill = new Bill();
                 bill.setId(rs.getInt("id"));
@@ -77,5 +77,5 @@ public class BillDao {
         }
         return arrayList;
     }
-    
-    }
+
+}

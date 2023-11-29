@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package model;
 
 /**
  *
- * @author Atul
+ * @author AK
  */
 public class Bill {
 
@@ -71,6 +68,7 @@ public class Bill {
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
+
     private String total;
     private String createdBy;
 

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package DAO;
 
 import javax.swing.JOptionPane;
@@ -11,12 +8,15 @@ import model.User;
 
 /**
  *
- * @author Atul
+ * @author AK
  */
 public class UserDao {
 
     public static void save(User user) {
-        String query = " insert into user(Name,Email,MobileNumber,Address,Password,SecurityQuestion,Answer,Status) values('" + user.getName() + "','" + user.getEmail() + "','" + user.getMobileNumber() + "','" + user.getAddress() + "','" + user.getPassword() + "','" + user.getSecurityQuestion() + "','" + user.getAnswer() + "','false')";
+        String query = " insert into user(Name,Email,MobileNumber,Address,Password,SecurityQuestion,Answer,Status) values('"
+                + user.getName() + "','" + user.getEmail() + "','" + user.getMobileNumber() + "','" + user.getAddress()
+                + "','" + user.getPassword() + "','" + user.getSecurityQuestion() + "','" + user.getAnswer()
+                + "','false')";
         DbOperation.setDataorDelete(query, "Registered Successfully!Wait for Admin Approval...");
 
     }
@@ -24,7 +24,8 @@ public class UserDao {
     public static User Login(String email, String password) {
         User user = null;
         try {
-            ResultSet rs = DbOperation.getData("select * from user where email='" + email + "'and password='" + password + "'");
+            ResultSet rs = DbOperation
+                    .getData("select * from user where email='" + email + "'and password='" + password + "'");
             while (rs.next()) {
                 user = new User();
                 user.setStatus(rs.getString("status"));
@@ -86,7 +87,8 @@ public class UserDao {
 
     public static void changePassword(String email, String oldPassword, String newPassword) {
         try {
-            ResultSet rs = DbOperation.getData("select * from user where email ='" + email + "' and password='" + oldPassword + "'");
+            ResultSet rs = DbOperation
+                    .getData("select * from user where email ='" + email + "' and password='" + oldPassword + "'");
             if (rs.next()) {
                 update(email, newPassword);
             } else {
@@ -99,7 +101,8 @@ public class UserDao {
 
     public static void changeSecurityQuestion(String email, String Password, String securityQuestion, String answer) {
         try {
-            ResultSet rs = DbOperation.getData("select * from user where email ='" + email + "' and password='" + Password + "'");
+            ResultSet rs = DbOperation
+                    .getData("select * from user where email ='" + email + "' and password='" + Password + "'");
             if (rs.next()) {
                 update(email, securityQuestion, answer);
             } else {
@@ -109,10 +112,10 @@ public class UserDao {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-         
 
     public static void update(String email, String securityQuestion, String answer) {
-        String query = "update user set securityQuestion='" + securityQuestion + "',answer='" + answer + "' where email='" + email + "'";
+        String query = "update user set securityQuestion='" + securityQuestion + "',answer='" + answer
+                + "' where email='" + email + "'";
         DbOperation.setDataorDelete(query, "SecurityQuestion changed Successfully...");
     }
 
